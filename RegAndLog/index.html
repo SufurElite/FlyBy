@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body>
+        <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+            <div class="page-content">
+              <div class="content-block-title">Registration: </div>
+              <div class="list-block">
+                <form id = "senior-form" class = "list-block"  action="https://flybyapp.herokuapp.com/register-senior" method="post" enctype="multipart/form-data" class="ajax-submit">
+                <ul>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-name"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Name</div>
+                        <div class="item-input">
+                          <input type="text" name="name" placeholder="Your name">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                    <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-name"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Age</div>
+                        <div class="item-input">
+                          <input type="text" name="age" placeholder="Age">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-email"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Address</div>
+                        <div class="item-input">
+                          <input type="text" name = "address" placeholder="Enter your Address here">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-url"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Hospital</div>
+                        <div class="item-input">
+                          <input type="text" name = "hopsital" placeholder="Hospital">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-password"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Username</div>
+                        <div class="item-input">
+                          <input type="text" name = "username" placeholder="Username">
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+                <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-password"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Password</div>
+                        <div class="item-input">
+                          <input type="text" name = "password" placeholder="Password">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <li>
+              <!-- <label for="file">Upload profile photo</label>
+                    <input name="profile_photo" type="file">
+                </li>
+                <li>
+                <label for="file">Upload identification photo</label>
+                    <input name="identification" type="file">
+                </li> -->
+                </ul>
+                    
+                <div class="content-block-title">Dependencies:</div>
+              
+                <ul>
+                  <li>
+                    <label class="label-checkbox item-content">
+                      <input type="checkbox" name="has_walker">
+                      <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                      <div class="item-inner">
+                        <div class="item-title">Do you use a walker?</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="label-checkbox item-content">
+                      <input type="checkbox" name="has_cane">
+                      <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                      <div class="item-inner">
+                        <div class="item-title">Do you use a cane?</div>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
+            </form>
+                
+              <div class="content-block">
+                <div class="row">
+                  <div class="col-50"><a href="#" class="button button-big button-fill color-red">Cancel</a></div>
+                  <div class="col-50">
+                      <button type="submit" form="senior-form" value="Submit" class="button button-big button-fill color-green form-to-data" id = "submit">Submit</button>
+                  </div>
+                </div>
+              </div>
+            
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Path to Framework7 Library JS-->
+      
+    <script type="text/javascript" src="js/framework7.min.js">
+      </script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>
