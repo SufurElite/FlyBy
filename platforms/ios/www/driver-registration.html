@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>My App</title>
+    <title>Flyby</title>
     <!-- Path to Framework7 Library CSS-->
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+      <script>
+      function goback()
+          {
+          window.location.href = "index.html";
+          }
+      </script>
   </head>
   <body>
     <div class="views">
@@ -110,7 +116,7 @@
 
             <div class="content-block">
               <div class="row">
-                <div class="col-50"><a href="#" class="button button-big button-fill color-red">Cancel</a></div>
+                <div class="col-50"><a onclick = "goback()" class="button button-big button-fill color-red">Cancel</a></div>
                 <div class="col-50">
                   <a value="Submit" class="button button-big button-fill color-green" id="driver-register">Submit</a>
                 </div>
