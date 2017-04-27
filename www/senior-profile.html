@@ -12,10 +12,23 @@
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
       <script>
+          
+      var i =0;
       function destination()
       {
         window.location.href = "map.html";
+      }
+          
+      function gray()
+      {
+        document.getElementById("list").style.backgroundColor="gray";
+        i++;
+        if((i%2)==0)
+            {
+                document.getElementById("list").style.backgroundColor="white";
+            }
       }
       </script>
   </head>
@@ -81,7 +94,7 @@
                       </div></a>
             </div>
           </div>
-          <!-- About Page-->
+          <!-- Info Page-->
           <div data-page="info" class="page cached">
             <div class="page-content">
               <div class="content-block">
@@ -147,7 +160,7 @@
               </div>
             </div>
           </div>
-          <!-- Services Page-->
+          <!-- Schedule Page-->
           <div data-page="schedule" class="page cached">
             <div class="page-content">
               <div class="list-block">
@@ -171,8 +184,28 @@
             <div class="page-content">
               <div class="list-block">
                 <form id= "RideForm">
-                  <ul>
-                  <li>
+                <p>You can either choose to request a car ride as soon to right now as possible, or schedule a date</p>
+                
+                <div class="content-block-title">As soon as possible</div>
+                <ul>
+                    <li>
+                        <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">Right Now:</div>
+                        <div class="item-input">
+                          <label class="label-switch">
+                            <input type="checkbox">
+                            <div class="checkbox" onclick ="gray()" id = "check"></div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    </li>
+                </ul>
+              
+                    <div class="content-block-title">Schedule a date:</div>
+                  <ul id = "list">
+                  <li id = "calendarDate">
                     <div class="item-content">
                       <div class="item-inner"> 
                         <div class="item-title label">Date of ride:</div>
@@ -233,6 +266,7 @@
                   </ul>
                 </form>
               </div>
+            
              <h4>When clicking this button you will be asked to select a starting point and destination to conclude your request.</h4>
               <div class="content-block">
                 <div class="row">
@@ -245,7 +279,7 @@
           </div>
         </div>
       </div>
-    
+      </div>
       
       
       
