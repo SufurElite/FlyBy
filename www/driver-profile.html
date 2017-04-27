@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+      <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
       <script>
       function destination()
       {
@@ -36,15 +37,15 @@
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
             <div class="center sliding">Your Information:</div>
           </div>
-          <!-- Navbar inner for Services page-->
-          <div data-page="schedule" class="navbar-inner cached">
+          <!-- Navbar inner for incoming page-->
+          <div data-page="incoming" class="navbar-inner cached">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-            <div class="center sliding">Scheduled Rides:</div>
+            <div class="center sliding">Incoming Rides:</div>
           </div>
-          <!-- Navbar inner for Form page-->
-          <div data-page="form" class="navbar-inner cached">
+       <!-- Navbar inner for incoming page-->
+          <div data-page="claimed" class="navbar-inner cached">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-            <div class="center sliding">Ride Request Form:</div>
+            <div class="center sliding">Claimed Rides:</div>
           </div>
         </div>
         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
@@ -57,8 +58,8 @@
               <div class="content-block">
                 <div class="content-block-inner">
                   <p>To see all the information you've provided, tap on "All my Information".</p>
-                  <p>In order to schedule a ride, tap on "Make a Ride Request".</p>
-                  <p>In order to see your upcoming rides, just tap on your "Schedule".</p>
+                  <p>In order to claim a ride, tap on "See Incoming Requests".</p>
+                  <p>In order to see your claimed rides, just tap on your "Claimed Rides".</p>
                 </div>
               </div>
               <div class="content-block-title">Control Center:</div>
@@ -68,16 +69,16 @@
                           <div class="col-50">All My Information:</div>
                       </div></a>
                     <br>
-                  <a href="#form" class="button button-big">
+                  <a href="#incoming" class="button button-big">
                       <div class="item-content"> 
                         <div class="item-inner">
-                          <div class="col-50"> Make a Ride Request:</div>
+                          <div class="col-50"> See Incoming Requests:</div>
                         </div>
                       </div></a>
                     <br>
-                  <a href="#schedule" class="button button-big button-fill">
+                  <a href="#claimed" class="button button-big button-fill">
                         <div class="item-inner">
-                          <div class="col-50">Scheduled Rides</div>
+                          <div class="col-50">Claimed Rides</div>
                       </div></a>
             </div>
           </div>
@@ -109,8 +110,8 @@
                      <div class="item-content">
                       <div class="item-media"></div>
                       <div class="item-inner"> 
-                        <div class="item-title label">Address:</div>
-                        <p>{{address}}</p>
+                        <div class="item-title label">License:</div>
+                        <p>{{license}}</p>
                       </div>
                     </div>
                     </li>
@@ -118,8 +119,8 @@
                      <div class="item-content">
                       <div class="item-media"></div>
                       <div class="item-inner"> 
-                        <div class="item-title label">Hospital:</div>
-                        <p>{{hospital}}</p>
+                        <div class="item-title label">Insurance:</div>
+                        <p>{{insurance}}</p>
                       </div>
                     </div>
                     </li>
@@ -127,28 +128,18 @@
                      <div class="item-content">
                       <div class="item-media"></div>
                       <div class="item-inner"> 
-                        <div class="item-title label">Uses a Cane:</div>
-                        <p>{{has_cane}}</p>
+                        <div class="item-title label">VIN:</div>
+                        <p>{{vin}}</p>
                       </div>
                     </div>
                     </li>
-                    <li>
-                     <div class="item-content">
-                      <div class="item-media"></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Uses a walker:</div>
-                        <p>{{has_walker}}</p>
-                      </div>
-                    </div>
-                    </li>
-                    
                   </ul>
                   </div>
               </div>
             </div>
           </div>
-          <!-- Services Page-->
-          <div data-page="schedule" class="page cached">
+          <!-- Incoming Page-->
+          <div data-page="incoming" class="page cached">
             <div class="page-content">
               <div class="list-block">
                 <h3>Rides:</h3> 
@@ -157,92 +148,39 @@
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-email"></i></div>
                       <div class="item-inner"> 
-                        <div class="item label">{{Starting Location}}</div>
-                        <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
+                          <div class="item label"><h3>{{distance}} </h3></div>
+                          <p>{{seniorname}}, {{address1}} to {{address2}}</p>
+                          <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
                         </div>
                       </div>
+                          <a value="Submit" class="button button-big button-fill" id="claim">Claim</a>
                       </li>
                   </ul>
               </div>
             </div>
           </div>
-          <!-- Form Page-->
-          <div data-page="form" class="page cached">
+        <!-- Claimed Rides Page-->
+          <div data-page="claimed" class="page cached">
             <div class="page-content">
               <div class="list-block">
-                <form id= "RideForm">
+                <h3>Rides:</h3> 
                   <ul>
-                  <li>
+                      <li><!--Have this repeat for each ride they have coming up.-->
                     <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-email"></i></div>
                       <div class="item-inner"> 
-                        <div class="item-title label">Date of ride:</div>
-                        <div class="item-input">
-                          <input type="text" placeholder="Date of Ride" readonly id="calendar">
+                          <div class="item label"><h3>{{distance}} </h3></div>
+                          <p>{{seniorname}}, {{address1}} to {{address2}}</p>
+                          <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-inner"> 
-                        <div class="item-title label">Hour:</div>
-                        <div class="item-input">
-                          <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>  
-                            <option>9</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-inner"> 
-                        <div class="item-title label">Quarter hour:</div>
-                        <div class="item-input">
-                          <select>
-                            <option>0</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-inner"> 
-                        <div class="item-title label">AM or PM:</div>
-                        <div class="item-input">
-                          <select>
-                            <option>AM</option>
-                            <option>PM</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
+                          <a value="Submit" class="button color-red button-big button-fill button-round" id="claim">Cancel</a>
+                      </li>
                   </ul>
-                </form>
-              </div>
-             <h4>When clicking this button you will be asked to select a starting point and destination to conclude your request.</h4>
-              <div class="content-block">
-                <div class="row">
-                  <div class="col-50">
-                    <input type="submit" value="Select Destination" id = "requestSubmit" onclick = "destination()" class="button button-big button-fill color-green">
-                  </div> <!--When this button is tapped it fills part of a json with the information provided here, but the rest of the json will be filed out in the submit button in maps.html-->
-                </div>
               </div>
             </div>
           </div>
+            
         </div>
       </div>
       </div>
