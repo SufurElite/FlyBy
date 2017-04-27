@@ -22,3 +22,8 @@ $$('#driver-register').on('click', function (e) {
     window.location.href = 'driver-profile.html';
   });
 });
+
+$$('#check').on('click', function (e) {
+    console.log("Fuck this");
+    $$('#list').style.color='gray';
+});

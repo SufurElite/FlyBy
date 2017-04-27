@@ -1,2 +1,291 @@
-<h1>Senior Profile</h1>
-<a href="map.html">Go to Map</a>
+<!--<h1>Senior Profile</h1>
+<a href="map.html">Go to Map</a>-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Flyby</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script>
+          
+      var i =0;
+      function destination()
+      {
+        window.location.href = "map.html";
+      }
+          
+      function gray()
+      {
+        document.getElementById("list").style.backgroundColor="gray";
+        i++;
+        if((i%2)==0)
+            {
+                document.getElementById("list").style.backgroundColor="white";
+            }
+      }
+      </script>
+  </head>
+  <body>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <!-- Navbar inner for Index page-->
+          <div data-page="index" class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">Flyby</div>
+          </div>
+          <!-- Navbar inner for About page-->
+          <div data-page="info" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Your Information:</div>
+          </div>
+          <!-- Navbar inner for Services page-->
+          <div data-page="schedule" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Scheduled Rides:</div>
+          </div>
+          <!-- Navbar inner for Form page-->
+          <div data-page="form" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Ride Request Form:</div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Index Page-->
+          <div data-page="senior-profile" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="content-block-title">{{name}}'s profile!</div>
+              <div class="content-block">
+                <div class="content-block-inner">
+                  <p>To see all the information you've provided, tap on "All my Information".</p>
+                  <p>In order to schedule a ride, tap on "Make a Ride Request".</p>
+                  <p>In order to see your upcoming rides, just tap on your "Schedule".</p>
+                </div>
+              </div>
+              <div class="content-block-title">Control Center:</div>
+                
+                  <a href="#info" class="button button-big button-fill">
+                        <div class="item-inner"> 
+                          <div class="col-50">All My Information:</div>
+                      </div></a>
+                    <br>
+                  <a href="#form" class="button button-big">
+                      <div class="item-content"> 
+                        <div class="item-inner">
+                          <div class="col-50"> Make a Ride Request:</div>
+                        </div>
+                      </div></a>
+                    <br>
+                  <a href="#schedule" class="button button-big button-fill">
+                        <div class="item-inner">
+                          <div class="col-50">Scheduled Rides</div>
+                      </div></a>
+            </div>
+          </div>
+          <!-- Info Page-->
+          <div data-page="info" class="page cached">
+            <div class="page-content">
+              <div class="content-block">
+                  <div class="list-block">
+                <ul>
+                    <li>
+                     <div class="item-content">
+                      <div class="item-media"></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Name:</div>
+                        <p>{{name}}</p>
+                      </div>
+                    </div>
+                    </li>
+                    <li>
+                     <div class="item-content">
+                      <div class="item-media"></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Age:</div>
+                        <p>{{age}}</p>
+                      </div>
+                    </div>
+                    </li>
+                    <li>
+                     <div class="item-content">
+                      <div class="item-media"></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Address:</div>
+                        <p>{{address}}</p>
+                      </div>
+                    </div>
+                    </li>
+                    <li>
+                     <div class="item-content">
+                      <div class="item-media"></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Hospital:</div>
+                        <p>{{hospital}}</p>
+                      </div>
+                    </div>
+                    </li>
+                    <li>
+                     <div class="item-content">
+                      <div class="item-media"></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Uses a Cane:</div>
+                        <p>{{has_cane}}</p>
+                      </div>
+                    </div>
+                    </li>
+                    <li>
+                     <div class="item-content">
+                      <div class="item-media"></div>
+                      <div class="item-inner"> 
+                        <div class="item-title label">Uses a walker:</div>
+                        <p>{{has_walker}}</p>
+                      </div>
+                    </div>
+                    </li>
+                    
+                  </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- Schedule Page-->
+          <div data-page="schedule" class="page cached">
+            <div class="page-content">
+              <div class="list-block">
+                <h3>Rides:</h3> 
+                  <ul>
+                      <li><!--Have this repeat for each ride they have coming up.-->
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon icon-form-email"></i></div>
+                      <div class="item-inner"> 
+                        <div class="item label">{{Starting Location}}</div>
+                        <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
+                        </div>
+                      </div>
+                      </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Form Page-->
+          <div data-page="form" class="page cached">
+            <div class="page-content">
+              <div class="list-block">
+                <form id= "RideForm">
+                <p>You can either choose to request a car ride as soon to right now as possible, or schedule a date</p>
+                
+                <div class="content-block-title">As soon as possible</div>
+                <ul>
+                    <li>
+                        <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">Right Now:</div>
+                        <div class="item-input">
+                          <label class="label-switch">
+                            <input type="checkbox">
+                            <div class="checkbox" onclick ="gray()" id = "check"></div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    </li>
+                </ul>
+              
+                    <div class="content-block-title">Schedule a date:</div>
+                  <ul id = "list">
+                  <li id = "calendarDate">
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">Date of ride:</div>
+                        <div class="item-input">
+                          <input type="text" placeholder="Date of Ride" readonly id="calendar">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">Hour:</div>
+                        <div class="item-input">
+                          <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>  
+                            <option>9</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">Quarter hour:</div>
+                        <div class="item-input">
+                          <select>
+                            <option>0</option>
+                            <option>15</option>
+                            <option>30</option>
+                            <option>45</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">AM or PM:</div>
+                        <div class="item-input">
+                          <select>
+                            <option>AM</option>
+                            <option>PM</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  </ul>
+                </form>
+              </div>
+            
+             <h4>When clicking this button you will be asked to select a starting point and destination to conclude your request.</h4>
+              <div class="content-block">
+                <div class="row">
+                  <div class="col-50">
+                    <input type="submit" value="Select Destination" id = "requestSubmit" onclick = "destination()" class="button button-big button-fill color-green">
+                  </div> <!--When this button is tapped it fills part of a json with the information provided here, but the rest of the json will be filed out in the submit button in maps.html-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      
+      
+      
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/other.js"></script>
+  </body>
+</html>

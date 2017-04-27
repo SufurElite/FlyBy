@@ -61,16 +61,21 @@
     </style>
   </head>
   <body>
+      
     <input id="origin-input" class="controls" type="text" placeholder="Enter pickup location">
     <button id="current1" type="button" class="controls navigation-btn" onclick="fillCurrentPosition('origin-input')">← Current Location</button>
 
     <input id="destination-input" class="controls" type="text" placeholder="Enter destination">
     <button id="current2" type="button" class="controls navigation-btn" onclick="fillCurrentPosition('destination-input')">← Current Location</button>
 
+    
+    <div class = "row">
     <button id="route-btn" type="button" class="controls navigation-btn">Show Route</button>
-
+    <button onclick = "cancel()" type = "button" class = "controls navigation-btn"> Cancel</button>
+    <button id="requestSubmit" type = "button" class = "controls navigation-btn">Submit Request!</button>
+    </div>
+    
     <div id="map"></div>
-
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -98,7 +103,6 @@
 
         new AutocompleteDirectionsHandler(map);
       }
-
        /**
         * @constructor
        */
@@ -122,7 +126,11 @@
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
       }
-
+        
+      function cancel()
+        {
+            window.location.href = "senior-profile.html";    
+        }
       AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);

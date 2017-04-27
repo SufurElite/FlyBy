@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'Flyby' target in the 'Flyby' project
+// Prefix header for all source files of the 'FlyBy' target in the 'FlyBy' project
 //
 
 #ifdef __OBJC__
