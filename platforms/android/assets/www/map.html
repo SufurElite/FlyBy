@@ -61,22 +61,63 @@
     </style>
   </head>
   <body>
-      
+
     <input id="origin-input" class="controls" type="text" placeholder="Enter pickup location">
     <button id="current1" type="button" class="controls navigation-btn" onclick="fillCurrentPosition('origin-input')">← Current Location</button>
 
     <input id="destination-input" class="controls" type="text" placeholder="Enter destination">
     <button id="current2" type="button" class="controls navigation-btn" onclick="fillCurrentPosition('destination-input')">← Current Location</button>
 
-    
+
     <div class = "row">
     <button id="route-btn" type="button" class="controls navigation-btn">Show Route</button>
-    <button onclick = "cancel()" type = "button" class = "controls navigation-btn"> Cancel</button>
-    <button id="requestSubmit" type = "button" class = "controls navigation-btn">Submit Request!</button>
+    <button onclick = "cancel()" type = "button" class = "controls navigation-btn">Cancel</button>
+    <button onclick="submitRequest()" type = "button" class = "controls navigation-btn">Submit Request</button>
     </div>
-    
+
     <div id="map"></div>
     <script>
+      // Addresses for origin and destination
+      var address = {
+        'origin-input': '',
+        'destination-input': ''
+      };
+
+      function cancel() {
+        window.location.href = "senior-profile.html";
+      }
+
+      function submitRequest() {
+        // Check if both origin and destination are filled
+        if(address['origin-input'] !== '' && address['destination-input'] !== '') {
+          // Retrieve ride request and append other information
+          var rideRequest = JSON.parse(localStorage.rideRequest);
+          rideRequest['origin'] = address['origin-input'];
+          rideRequest['destination'] = address['destination-input'];
+
+          var user = JSON.parse(localStorage.user);
+          rideRequest['username'] = user.username;
+          rideRequest['senior_name'] = user.name;
+          rideRequest['phone'] = user.phone;
+
+          localStorage.setItem('rideRequest', JSON.stringify(rideRequest));
+
+          // POST to server
+          $.ajax({
+            type : "POST",
+            url : 'https://flybyapp.herokuapp.com/request-ride',
+            data: JSON.stringify(rideRequest, null, '\t'),
+            contentType: 'application/json;charset=UTF-8',
+            success: function(data) {
+              alert('Successfully scheduled ride!');
+              window.location.href = 'senior-profile.html';
+            }
+          });
+        } else {
+          alert('Please fill in both pickup location and destination')
+        }
+      }
+
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
@@ -126,11 +167,7 @@
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
       }
-        
-      function cancel()
-        {
-            window.location.href = "senior-profile.html";    
-        }
+
       AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);
@@ -148,10 +185,13 @@
             window.alert("Please select an option from the dropdown list.");
             return;
           }
+          console.log(place);
           if (mode === 'ORIG') {
             me.originPlaceId = place.place_id;
+            address['origin-input'] = place.name;
           } else {
             me.destinationPlaceId = place.place_id;
+            address['destination-input'] = place.name;
           }
           me.route();
         });
@@ -209,6 +249,7 @@
                 if (results[0]) {
                   document.getElementById(searchID).value = 'CURRENT LOCATION';
                   document.getElementById(searchID).placeId = results[0].place_id;
+                  address[searchID] = results[0].formatted_address;
                 } else {
                   window.alert('Unable to determine current location');
                 }
@@ -220,6 +261,7 @@
         }
       }
     </script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NFn-mBSlIyhDwT4g-u5pSxOd8KA0zFQ&libraries=places&callback=initMap"
         async defer></script>
   </body>
