@@ -54,7 +54,7 @@
           <div data-page="senior-profile" class="page">
             <!-- Scrollable page content-->
             <div class="page-content">
-              <div class="content-block-title">{{name}}'s Profile</div>
+              <div class="content-block-title">Profile</div>
               <div class="content-block">
                 <div class="content-block-inner">
                   <p>To see all the information you've provided, tap on "All my Information".</p>
@@ -141,22 +141,8 @@
           <!-- Incoming Page-->
           <div data-page="incoming" class="page cached">
             <div class="page-content">
-              <div class="list-block">
-                <h3>Rides:</h3>
-                  <ul>
-                      <li><!--Have this repeat for each ride they have coming up.-->
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-email"></i></div>
-                      <div class="item-inner">
-                          <div class="item label"><h3>{{distance}} </h3></div>
-                          <p>{{seniorname}}, {{address1}} to {{address2}}</p>
-                          <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
-                        </div>
-                      </div>
-                          <a value="Submit" class="button button-big button-fill" id="claim">Claim</a>
-                      </li>
-                  </ul>
-              </div>
+              <p><a onclick="getRides()" class="button button-round">Refresh Rides</a></p>
+              <div id="ride-table"></div>
             </div>
           </div>
         <!-- Claimed Rides Page-->
@@ -183,6 +169,28 @@
         </div>
       </div>
     </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+    function getRides() {
+      $.get('https://flybyapp.herokuapp.com/all-rides', function(data) {
+        $('#ride-table').html('');
+
+        data = JSON.parse(data);
+
+        for(var i in data) {
+          // Individual ride request
+          var rr = JSON.parse(data[i]);
+
+          // Place ride requests on page
+          var date = new Date(rr.ride_date);
+          var content = 'Senior Name: ' + rr.senior_name + '<br>Senior Phone Number: ' + rr.senior_phone + '<br>Pickup Location: ' + rr.origin + '<br>Destination: ' + rr.destination + '<br>Date & Time: ' + date.toLocaleString();
+          var card = $('<div class="card"><div class="card-content"><div class="card-content-inner">' + content + '</div></div></div>');
+          $('#ride-table').append(card);
+        }
+      });
+    }
+    </script>
 
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>

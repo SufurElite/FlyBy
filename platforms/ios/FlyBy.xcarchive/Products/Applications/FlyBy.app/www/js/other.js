@@ -14,16 +14,15 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 });
 
-var myCalendar = myApp.calendar({
-    input: '#calendar'
-});
-
 // Variable to store chosen calendar date
 var rideDateTime;
 
-// Update date when selected from date picker
-myCalendar.onDayClick(function(dayContainer, year, month, day) {
-  rideDateTime = new Date(year, month, day);
+var myCalendar = myApp.calendar({
+    input: '#calendar',
+    onDayClick: function(p, dayContainer, year, month, day) {
+      // Update date when selected from date picker
+      rideDateTime = new Date(year, month, day);
+    }
 });
 
 function destination()
@@ -35,12 +34,34 @@ function destination()
   if($('#actualcheckbox').is(':checked')) {
     rideRequest = {
       datetime: Date.now()
-    }
+    };
+
+    localStorage.setItem('rideRequest', JSON.stringify(rideRequest));
   } else {
     // Check if date has been selected
-    console.log(myCalendar);
+    if(typeof rideDateTime !== 'undefined') {
+      var hours = parseInt($('#hours').val());
+      // Change hours based on AM/PM
+      var ampm = $('#ampm').val();
+      if(ampm === 'PM')
+        hours += 12;
+
+      var minutes = parseInt($('#minutes').val());
+
+      rideDateTime.setHours(hours);
+      rideDateTime.setMinutes(minutes);
+
+      rideRequest = {
+        datetime: rideDateTime.getTime()
+      };
+
+      localStorage.setItem('rideRequest', JSON.stringify(rideRequest));
+    } else {
+      myApp.alert('Please select a date from the calendar or choose "Right Now"');
+      return;
+    }
   }
 
   // Display map
-  //window.location.href = "map.html";
+  window.location.href = "map.html";
 }

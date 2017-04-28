@@ -11,12 +11,17 @@
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
       <script>
-      function driverReg(){
+      function driverReg() {
         window.location.href="driver-registration.html";
       }
-      function seniorReg()
-      {
+      function seniorReg() {
         window.location.href = "senior-registration.html";
+      }
+      function driverLog() {
+        window.location.href = "driver-login.html";
+      }
+      function seniorLog() {
+        window.location.href = "senior-login.html";
       }
       </script>
   </head>
@@ -69,7 +74,7 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-          <div class="center sliding">Registration:</div>
+          <div class="center sliding">Registration</div>
         </div>
       </div>
       <div class="pages">
@@ -101,39 +106,14 @@
           <div class="page-content">
             <div class="content-block">
               <div class="content-block-inner">
-                <form id = "login" class = "list-block"  action="insertloginheroku" method="post" enctype="multipart/form-data" class="ajax-submit">
-                <ul>
-                <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-password"></i></div>
+                <a class="button button-big button-round" onclick="driverLog()">Login as Driver</a>
+                  <br>
+                  <a class="button button-big button-round" id = "seniorReg" onclick="seniorLog()">
                       <div class="item-inner">
-                        <div class="item-title label">Username</div>
-                        <div class="item-input">
-                          <input type="text" name = "username" placeholder="Username">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-password"></i></div>
-                      <div class="item-inner">
-                        <div class="item-title label">Password</div>
-                        <div class="item-input">
-                          <input type="text" name = "password" placeholder="Password">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                <li>
-            </form>
-                </div>
-              <br>
-                  <div class="col-50">
-                      <button type="submit" form="senior-form" value="Submit" class="button button-big button-fill form-to-data" id = "loginsubmit">Submit</button>
-                  </div>
-
+                        <div class="col-50">Login as Senior</div>
+                      </div></a>
               </div>
+            </div>
             </div>
           </div>
         </div>

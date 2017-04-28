@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
   <body>
     <!-- Views-->
@@ -48,7 +47,7 @@
           <div data-page="senior-profile" class="page">
             <!-- Scrollable page content-->
             <div class="page-content">
-              <div class="content-block-title">{{name}}'s profile!</div>
+              <div class="content-block-title">Profile</div>
               <div class="content-block">
                 <div class="content-block-inner">
                   <p>To see all the information you've provided, tap on "All my Information".</p>
@@ -104,8 +103,8 @@
                      <div class="item-content">
                       <div class="item-media"></div>
                       <div class="item-inner">
-                        <div class="item-title label">Address</div>
-                        <p id="address"></p>
+                        <div class="item-title label">Phone Number</div>
+                        <p id="phone"></p>
                       </div>
                     </div>
                     </li>
@@ -136,29 +135,16 @@
                       </div>
                     </div>
                     </li>
-
                   </ul>
-                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- Schedule Page-->
           <div data-page="schedule" class="page cached">
             <div class="page-content">
-              <div class="list-block">
-                <h3>Rides:</h3>
-                  <ul>
-                      <li><!--Have this repeat for each ride they have coming up.-->
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-email"></i></div>
-                      <div class="item-inner">
-                        <div class="item label">{{Starting Location}}</div>
-                        <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
-                        </div>
-                      </div>
-                      </li>
-                  </ul>
-              </div>
+              <p><a onclick="getRides()" class="button button-round">Refresh Rides</a></p>
+              <div id="schedule"></div>
             </div>
           </div>
           <!-- Form Page-->
@@ -202,19 +188,19 @@
                       <div class="item-inner">
                         <div class="item-title label">Hour</div>
                         <div class="item-input">
-                          <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
+                          <select id="hours">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
                           </select>
                         </div>
                       </div>
@@ -225,11 +211,11 @@
                       <div class="item-inner">
                         <div class="item-title label">Quarter Hour</div>
                         <div class="item-input">
-                          <select>
-                            <option>00</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>45</option>
+                          <select id="minutes">
+                            <option value="0">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
                           </select>
                         </div>
                       </div>
@@ -240,9 +226,9 @@
                       <div class="item-inner">
                         <div class="item-title label">AM/PM</div>
                         <div class="item-input">
-                          <select>
-                            <option>AM</option>
-                            <option>PM</option>
+                          <select id="ampm">
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
                           </select>
                         </div>
                       </div>
@@ -265,12 +251,13 @@
       </div>
     </div>
 
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
     // Fill user's information in p tags
     var user = JSON.parse(localStorage.user);
     $('#name').text(user.name);
     $('#age').text(user.age);
-    $('#address').text(user.address);
+    $('#phone').text(user.phone);
     $('#hospital').text(user.hospital);
     $('#has_walker').text(user.has_walker);
     $('#has_cane').text(user.has_cane);
@@ -283,6 +270,27 @@
         $('#list').attr('disabled', true);
       }
     });
+
+    function getRides() {
+      var user = JSON.parse(localStorage.user);
+
+      $.get('https://flybyapp.herokuapp.com/scheduled-rides/' + user.username, function(data) {
+        $('#schedule').html('');
+
+        data = JSON.parse(data);
+
+        for(var i in data) {
+          // Individual ride request
+          var rr = JSON.parse(data[i]);
+
+          // Place ride requests on page
+          var date = new Date(rr.ride_date);
+          var content = 'Pickup Location: ' + rr.origin + '<br>Destination: ' + rr.destination + '<br>Date & Time: ' + date.toLocaleString();
+          var card = $('<div class="card"><div class="card-content"><div class="card-content-inner">' + content + '</div></div></div>');
+          $('#schedule').append(card);
+        }
+      });
+    }
     </script>
 
     <!-- Path to Framework7 Library JS-->

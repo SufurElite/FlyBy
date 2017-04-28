@@ -10,7 +10,7 @@ var mainView = myApp.addView('.view-main');
 // Senior registration form submission
 $$('#senior-register').on('click', function (e) {
   var formData = $('#senior-form').serialize();
-  $$.post('http://127.0.0.1:5000/register-senior', formData, function(data) {
+  $$.post('https://flybyapp.herokuapp.com/register-senior', formData, function(data) {
     // Store user information in localStorage
     localStorage.setItem('user', data);
 
@@ -21,12 +21,7 @@ $$('#senior-register').on('click', function (e) {
 // Driver registration form submission
 $$('#driver-register').on('click', function (e) {
   var formData = $('#driver-form').serialize();
-  $$.post('http://127.0.0.1:5000/register-driver', formData, function(data) {
+  $$.post('https://flybyapp.herokuapp.com/register-driver', formData, function(data) {
     window.location.href = 'driver-profile.html';
   });
-});
-
-$$('#check').on('click', function (e) {
-    console.log("Fuck this");
-    $$('#list').style.color='gray';
 });
