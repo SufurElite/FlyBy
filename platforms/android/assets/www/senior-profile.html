@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
   <body>
     <!-- Views-->
@@ -144,7 +143,7 @@
           <!-- Schedule Page-->
           <div data-page="schedule" class="page cached">
             <div class="page-content">
-              <input onclick="getRides()" value="Refresh Rides" class="button button-big button-fill color-green">
+              <p><a onclick="getRides()" class="button button-round">Refresh Rides</a></p>
               <div id="schedule"></div>
             </div>
           </div>
@@ -252,6 +251,7 @@
       </div>
     </div>
 
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
     // Fill user's information in p tags
     var user = JSON.parse(localStorage.user);

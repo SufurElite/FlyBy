@@ -71,7 +71,7 @@
 
     <div class = "row">
     <button id="route-btn" type="button" class="controls navigation-btn">Show Route</button>
-    <button onclick = "cancel()" type = "button" class = "controls navigation-btn">Cancel</button>
+    <button onclick = "cancel()" id="cancel" type = "button" class = "controls navigation-btn">Cancel</button>
     <button onclick="submitRequest()" type = "button" class = "controls navigation-btn">Submit Request</button>
     </div>
 
@@ -88,6 +88,7 @@
       }
 
       function submitRequest() {
+        $('#cancel').html('bleh');
         // Check if both origin and destination are filled
         if(address['origin-input'] !== '' && address['destination-input'] !== '') {
           // Retrieve ride request and append other information

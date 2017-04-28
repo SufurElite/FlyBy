@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/my-app.css">
       <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
       <script>
+          //This script sends you to the map.html page to determine your location
       function destination()
       {
         window.location.href = "map.html";
@@ -23,11 +24,13 @@
   <body>
     <!-- Views-->
     <div class="views">
-      <!-- Your main view, should have "view-main" class-->
+      <!-- Main view -->
       <div class="view view-main">
         <!-- Top Navbar-->
         <div class="navbar">
           <!-- Navbar inner for Index page-->
+            <!--This html utilizies data-pages that allows you to split the page into segments that are triggered 
+                when you click on somethig with the a tage that has a href of ="#<data-page>"-->
           <div data-page="index" class="navbar-inner">
             <!-- We have home navbar without left link-->
             <div class="center sliding">Flyby</div>
@@ -63,12 +66,12 @@
                 </div>
               </div>
               <div class="content-block-title">Control Center</div>
-
                   <a href="#info" class="button button-big button-fill">
                         <div class="item-inner">
                           <div class="col-50">All My Information</div>
                       </div></a>
                     <br>
+                
                   <a href="#incoming" class="button button-big">
                       <div class="item-content">
                         <div class="item-inner">
@@ -76,13 +79,14 @@
                         </div>
                       </div></a>
                     <br>
+                <!--
                   <a href="#claimed" class="button button-big button-fill">
                         <div class="item-inner">
                           <div class="col-50">Claimed Rides</div>
-                      </div></a>
+                      </div></a>-->
             </div>
           </div>
-          <!-- About Page-->
+          <!-- About Page, that is linked to using the href from earlier-->
           <div data-page="info" class="page cached">
             <div class="page-content">
               <div class="content-block">
@@ -92,6 +96,7 @@
                      <div class="item-content">
                       <div class="item-media"></div>
                       <div class="item-inner">
+                          <!--recieves json of the driver, and display all the information below where the {{}} are-->
                         <div class="item-title label">Name</div>
                         <p>{{name}}</p>
                       </div>
@@ -141,7 +146,10 @@
           <!-- Incoming Page-->
           <div data-page="incoming" class="page cached">
             <div class="page-content">
-              <input onclick="getRides()" value="Refresh Rides" class="button button-big button-fill color-blue">
+                <!--
+                    when you click on the refresh rides it fetches all the rides, and displays them based upon the time the senior wishes to be pick up.
+                -->
+              <p><a onclick="getRides()" class="button button-round">Refresh Rides</a></p>
               <div id="ride-table"></div>
             </div>
           </div>
@@ -155,12 +163,14 @@
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-email"></i></div>
                       <div class="item-inner">
+                          <!--Will implement funcitonality to fetch the json and retrieve all the data needed as illustrated between the {{}}
+                            -->
                           <div class="item label"><h3>{{distance}} </h3></div>
                           <p>{{seniorname}}, {{address1}} to {{address2}}</p>
                           <p>{{Date}},{{Hour}},{{QuarterHour}},{{AM}}</p>
                         </div>
                       </div>
-                          <a value="Submit" class="button color-red button-big button-fill button-round" id="claim">Cancel</a>
+                          <a value="Cancel" class="button color-red button-big button-fill button-round" id="claim">Cancel</a>
                       </li>
                   </ul>
               </div>
@@ -170,8 +180,10 @@
       </div>
     </div>
 
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
     function getRides() {
+        //This function displays all the rides that are qued.
       $.get('https://flybyapp.herokuapp.com/all-rides', function(data) {
         $('#ride-table').html('');
 
@@ -195,6 +207,5 @@
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/other.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </body>
 </html>
