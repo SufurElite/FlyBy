@@ -75,6 +75,7 @@
     $('#driver-login').click(function (e) {
       var formData = $('#driver-login-form').serialize();
       $.post('https://flybyapp.herokuapp.com/login-driver', formData, function(data) {
+        data = JSON.parse(data);
         // Check if login success
         if(data === 'Success') {
           window.location.href = 'driver-profile.html';
