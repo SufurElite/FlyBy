@@ -11,15 +11,19 @@
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
       <script>
+          //This function is used to send those that are registering as a driver to the driver registration page
       function driverReg() {
         window.location.href="driver-registration.html";
       }
+          //This function is used to send those that are registering as a senior to the senior registration page
       function seniorReg() {
         window.location.href = "senior-registration.html";
       }
+          //This function is used to send those that are loging in as a driver to the driver login page
       function driverLog() {
         window.location.href = "driver-login.html";
       }
+          //This function is used to send those that are registering as a driver to the senior login page
       function seniorLog() {
         window.location.href = "senior-login.html";
       }
@@ -33,7 +37,7 @@
 
     <!-- Views-->
     <div class="views">
-      <!-- Your main view, should have "view-main" class-->
+      <!-- main view-->
       <div class="view view-main">
         <!-- Top Navbar-->
         <div class="navbar">
@@ -56,12 +60,13 @@
 
                   <a href="#" data-template="login" data-context-name="login" class="button button-big button-round">
                       <div class="item-inner">
-                        <div class="item-title" style = "text-align: center;">Login</div>
+                        <div class="item-title" style = "text-align: center;">Login</div> <!--Instead of sending it to another page it will send to an area 
+                        on this page with the data template name of login-->
                       </div></a>
                   <br>
                   <a href="#" data-template="registration" data-context-name="registration" class="button button-big button-round">
                       <div class="item-inner">
-                        <div class="col-50">Register</div>
+                        <div class="col-50">Register</div> <!--Instead of sending to another page it will send to an area on this page with the data template name of registration: -->
                       </div></a>
             </div>
           </div>
@@ -69,7 +74,10 @@
 
     </div>
     </div>
-    <!-- Template7 templates-->
+    <!-- templates-->
+    <!--Registration Template: 
+    If they choose to register as a senior or as a driver, it uses an onclick function to send them to their respective registration pages. 
+    -->
     <script type="text/template7" id="registration">
       <div class="navbar">
         <div class="navbar-inner">
@@ -94,6 +102,10 @@
         </div>
       </div>
     </script>
+      <!--Login Template:
+        If they choose that they are a senior or driver, they are now sent to their respective html pages
+        using an onclick function that changes the location of the window.
+        -->
       <script type="text/template7" id="login">
       <div class="navbar">
         <div class="navbar-inner">

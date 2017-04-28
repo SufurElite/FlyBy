@@ -25,16 +25,10 @@
           <div class="page-content">
             <div class="content-block-title">Registration: </div>
             <div class="list-block">
-<<<<<<< HEAD
-              <form id = "driver-login-form" class = "list-block"  method="post">
-||||||| merged common ancestors
-              <form id = "senior-login-form" class = "list-block"  method="post">
-=======
                 <!--
                 
                 -->
               <form id = "driver-login-form" class = "list-block"  method="post">
->>>>>>> origin/master
               <ul>
                 <li>
                   <div class="item-content">
@@ -80,35 +74,15 @@
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script>
-<<<<<<< HEAD
-    // Driver login form submission
-    $('#driver-login').click(function (e) {
-||||||| merged common ancestors
-    // Senior registration form submission
-    $$('#driver-login').on('click', function (e) {
-=======
     // Driver registration form submission
     $$('#driver-login').on('click', function (e) {
->>>>>>> origin/master
       var formData = $('#driver-login-form').serialize();
-      $.post('https://flybyapp.herokuapp.com/login-driver', formData, function(data) {
-        // Check if login success
+      $$.post('http://127.0.0.1:5000/login-driver', formData, function(data) {
         if(data === 'Success') {
-<<<<<<< HEAD
-          window.location.href = 'driver-profile.html';
-        } else {
-          alert(data);
-||||||| merged common ancestors
-          // Store user information in localStorage
-          localStorage.setItem('user', data);
-
-          window.location.href = 'senior-profile.html';
-=======
           // Store user information in localStorage
           localStorage.setItem('user', data);
 
           window.location.href = 'driver-profile.html';
->>>>>>> origin/master
         }
       });
     });
