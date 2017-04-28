@@ -11,6 +11,7 @@
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
       <script>
+          //This script sends you back to the  index.html page
       function goback()
           {
           window.location.href = "index.html";
@@ -24,6 +25,10 @@
         <div class="page-content">
           <div class="content-block-title">Registration</div>
           <div class="list-block">
+              <!--
+                This form is for the driver registration, and after hitting the submit button the data from the form is compiled and sent up to 
+                a heroku collection for drivers. 
+                -->
             <form id = "driver-form" class = "list-block" method="post">
             <ul>
               <li>
@@ -65,13 +70,15 @@
                   <div class="item-inner">
                     <div class="item-title label">Password</div>
                     <div class="item-input">
-                      <input type="text" name = "password" placeholder="Password">
+                      <input type="password" name = "password" placeholder="Password">
                     </div>
                   </div>
                 </div>
               </li>
               <li>
-            <!--<label for="file">Upload profile photo</label>
+            <!--
+            Potentially add this later for further security.
+            <label for="file">Upload profile photo</label>
                   <input name="profile_photo" type="file">
               </li>
               <li>
@@ -116,8 +123,11 @@
 
             <div class="content-block">
               <div class="row">
+                  <!--The Cancel button triggers a function that sends you back to the index.html page-->
                 <div class="col-50"><a onclick = "goback()" class="button button-big button-fill color-red">Cancel</a></div>
                 <div class="col-50">
+                    <!--The submit button triggers a function in the my-apps page that takes all the form data and sends it to a heroku collection
+                    -->
                   <a value="Submit" class="button button-big button-fill color-green" id="driver-register">Submit</a>
                 </div>
               </div>

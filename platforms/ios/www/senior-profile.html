@@ -40,6 +40,7 @@
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
             <div class="center sliding">Request a Ride</div>
           </div>
+
         </div>
         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
         <div class="pages navbar-through toolbar-through">
@@ -55,7 +56,7 @@
                   <p>In order to see your upcoming rides, just tap on your "Schedule".</p>
                 </div>
               </div>
-              <div class="content-block-title">Control Center:</div>
+              <div class="content-block-title">Control Center</div>
 
                   <a href="#info" class="button button-big button-fill">
                         <div class="item-inner">
@@ -73,6 +74,8 @@
                         <div class="item-inner">
                           <div class="col-50">Scheduled Rides</div>
                       </div></a>
+                      <br>
+                  <a class="button button-big button-fill color-red" id="logout">Logout</a>
             </div>
           </div>
           <!-- Info Page-->
@@ -269,6 +272,13 @@
       } else {
         $('#list').attr('disabled', true);
       }
+    });
+
+    // Logout user
+    $('#logout').click(function() {
+      localStorage.removeItem('user');
+      alert('Logged out');
+      window.location.href = 'index.html';
     });
 
     function getRides() {
