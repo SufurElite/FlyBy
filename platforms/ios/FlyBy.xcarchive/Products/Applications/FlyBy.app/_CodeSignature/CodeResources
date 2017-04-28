@@ -206,7 +206,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		r//THTkPQeFxemuTgmktoAd6w3w=
+		9b/h8iqysA93oq0qEse1cd+Cm54=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -214,7 +214,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		X1OWCUP7A5uhpjxd6MkwPdpuYCQ=
+		v67RMRVOBIoh35snHG5JIWAS7/s=
 		</data>
 		<key>CDVNotification.bundle/beep.wav</key>
 		<data>
@@ -282,7 +282,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		qPQtn7cQOQxw0M92mBTCoDyHnWM=
+		+pEzNOpoAJDpOK6ZQ/FqvYZ9ERg=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -370,7 +370,7 @@
 		</data>
 		<key>www/css/my-app.css</key>
 		<data>
-		/uxd88pU25/p/FFe1wGkS9JeCVc=
+		/JiLCxv6r4ZEMJxqmF4TjuIr374=
 		</data>
 		<key>www/driver-login.html</key>
 		<data>
@@ -438,7 +438,7 @@
 		</data>
 		<key>www/map.html</key>
 		<data>
-		jspqjwzBAY6d7EzqyARheVo3794=
+		LFjyTN3SBLlrsGx0liiSsa3gxX4=
 		</data>
 		<key>www/plugins/cordova-plugin-battery-status/www/battery.js</key>
 		<data>
@@ -1342,11 +1342,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			r//THTkPQeFxemuTgmktoAd6w3w=
+			9b/h8iqysA93oq0qEse1cd+Cm54=
 			</data>
 			<key>hash2</key>
 			<data>
-			6tksm+At58PKRQP7qXtDnbuIAxdijwR29lE/mZLfxAY=
+			Eb9lBio5qBwAZk5IqkSy1j2UwP10SJLgp9vg/yIojeU=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -1364,11 +1364,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X1OWCUP7A5uhpjxd6MkwPdpuYCQ=
+			v67RMRVOBIoh35snHG5JIWAS7/s=
 			</data>
 			<key>hash2</key>
 			<data>
-			hmEG0OrfBzkoetS14UVT8RYzvSKA5Y9XwEQMZwxSYGA=
+			rQDzcJj/wYN+rev6US+d6dcc3YvLBteJLG9vuyeK46k=
 			</data>
 		</dict>
 		<key>CDVNotification.bundle/beep.wav</key>
@@ -1540,11 +1540,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qPQtn7cQOQxw0M92mBTCoDyHnWM=
+			+pEzNOpoAJDpOK6ZQ/FqvYZ9ERg=
 			</data>
 			<key>hash2</key>
 			<data>
-			steoNKriV67AutD7bgd2xYzsZ3O6yOGYcVQgPrCknHw=
+			nFFo1Ww8Bbm5IfGUMHOFlgTn2YNnyV3/Z7S2vuE/tsY=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -1771,11 +1771,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/uxd88pU25/p/FFe1wGkS9JeCVc=
+			/JiLCxv6r4ZEMJxqmF4TjuIr374=
 			</data>
 			<key>hash2</key>
 			<data>
-			0VYGWnu3EhaFajNsC9V0YwmOEXvLRYJfdw7/hx3ExiI=
+			qXrik3lN7nKWS0/h9irXXluLKUzSwbIXyOEyn91DmEI=
 			</data>
 		</dict>
 		<key>www/driver-login.html</key>
@@ -1958,11 +1958,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jspqjwzBAY6d7EzqyARheVo3794=
+			LFjyTN3SBLlrsGx0liiSsa3gxX4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Qnfgcd0lgUP8+BG/+wbZsp3fcvvekJeCMgKci/s6Dm0=
+			nokHhQ3r3QRi+jppc1cmFyIAhsXBvTLwxblc7YK1Q7k=
 			</data>
 		</dict>
 		<key>www/plugins/cordova-plugin-battery-status/www/battery.js</key>
