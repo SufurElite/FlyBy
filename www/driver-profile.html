@@ -69,6 +69,8 @@
                           <div class="col-50">All My Information</div>
                       </div></a>
                     <br>
+                    <a class="button button-big button-fill color-red" id="logout">Logout</a>
+
                   <!--<a href="#incoming" class="button button-big">
                       <div class="item-content">
                         <div class="item-inner">
@@ -172,6 +174,12 @@
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
+    // Logout user
+    $('#logout').click(function() {
+      alert('Logged out');
+      window.location.href = 'index.html';
+    });
+
     function getRides() {
       $.get('https://flybyapp.herokuapp.com/all-rides', function(data) {
         $('#ride-table').html('');

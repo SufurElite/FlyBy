@@ -24,7 +24,7 @@
           <div class="page-content">
             <div class="content-block-title">Registration: </div>
             <div class="list-block">
-              <form id = "senior-login-form" class = "list-block"  method="post">
+              <form id = "driver-login-form" class = "list-block"  method="post">
               <ul>
                 <li>
                   <div class="item-content">
@@ -43,7 +43,7 @@
                     <div class="item-inner">
                       <div class="item-title label">Password</div>
                       <div class="item-input">
-                        <input type="text" name = "password" placeholder="Password">
+                        <input type="password" name = "password" placeholder="Password">
                       </div>
                     </div>
                   </div>
@@ -70,15 +70,15 @@
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script>
-    // Senior registration form submission
-    $$('#driver-login').on('click', function (e) {
+    // Driver login form submission
+    $('#driver-login').click(function (e) {
       var formData = $('#driver-login-form').serialize();
-      $$.post('http://127.0.0.1:5000/login-driver', formData, function(data) {
+      $.post('https://flybyapp.herokuapp.com/login-driver', formData, function(data) {
+        // Check if login success
         if(data === 'Success') {
-          // Store user information in localStorage
-          localStorage.setItem('user', data);
-
-          window.location.href = 'senior-profile.html';
+          window.location.href = 'driver-profile.html';
+        } else {
+          alert(data);
         }
       });
     });

@@ -43,7 +43,7 @@
                     <div class="item-inner">
                       <div class="item-title label">Password</div>
                       <div class="item-input">
-                        <input type="text" name = "password" placeholder="Password">
+                        <input type="password" name = "password" placeholder="Password">
                       </div>
                     </div>
                   </div>
@@ -70,15 +70,20 @@
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script>
-    // Senior registration form submission
-    $$('#senior-login').on('click', function (e) {
+    // Senior login form submission
+    $('#senior-login').click(function (e) {
       var formData = $('#senior-login-form').serialize();
-      $$.post('http://127.0.0.1:5000/login-senior', formData, function(data) {
-        if(data === 'Success') {
+      $.post('https://flybyapp.herokuapp.com/login-senior', formData, function(data) {
+        // Check if success
+        var datacheck = JSON.parse(data);
+
+        if(typeof datacheck === 'object') {
           // Store user information in localStorage
           localStorage.setItem('user', data);
 
           window.location.href = 'senior-profile.html';
+        } else {
+          alert(data);
         }
       });
     });
